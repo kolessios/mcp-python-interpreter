@@ -71,7 +71,7 @@ For Windows:
       ],
         "env": {
             "MCP_ALLOW_SYSTEM_ACCESS": 0
-        },
+        }
     }
   }
 }
