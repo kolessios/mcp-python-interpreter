@@ -1,0 +1,26 @@
+name: deploy
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref_name }}
+  cancel-in-progress: true
+
+on:
+  workflow_dispatch:
+  push:
+    paths-ignore:
+      - .devcontainer/**
+      - .github/**
+      - .docker/**
+      - README.md
+      - LICENSE
+    branches: [main]
+
+jobs:
+  # Call the workflow to build the project
+  build:
+    uses: ./.github/workflows/build.yml
+    secrets: inherit
+    with:
+      docker-image-tag: production
+      docker-file: Dockerfile
+

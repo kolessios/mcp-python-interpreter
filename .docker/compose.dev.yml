@@ -1,0 +1,11 @@
+services:
+  mcp-python-interpreter:
+    build:
+      context: ../
+      dockerfile: Dockerfile
+    command: tail -f /dev/null
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "1"
+        max-size: "200k"
